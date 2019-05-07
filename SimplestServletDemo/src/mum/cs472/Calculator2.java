@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Calculator2
  */
-@WebServlet("/Calculator2")
+@WebServlet(urlPatterns = "/Calculator2")
 public class Calculator2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
