@@ -49,12 +49,14 @@ public class QuizServletLab extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int answer = Integer.getInteger(request.getParameter("answer"));
+		int answer = Integer.valueOf(request.getParameter("answer"));
+		System.out.println(answer);
 		HttpSession s = request.getSession();
 		Object obj = s.getAttribute("scroe");
-		int scroe = obj != null ? Integer.getInteger(obj.toString()) : 0;
+		int scroe = obj != null ? Integer.valueOf(obj.toString()) : 0;
 		if (answer == answers[scroe]) {
 			scroe += 1;
+			s.setAttribute("scroe", scroe);
 			if (scroe == answers.length) {
 				this.showResultPage(request, response);
 			} else {
@@ -68,7 +70,7 @@ public class QuizServletLab extends HttpServlet {
 	private void showPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession s = request.getSession();
 		Object obj = s.getAttribute("scroe");
-		int scroe = obj != null ? Integer.getInteger(obj.toString()) : 0;
+		int scroe = obj != null ? Integer.valueOf(obj.toString()) : 0;
 		PrintWriter out = response.getWriter();
 		out.print("<html>");
         out.print("<head>");
@@ -80,9 +82,8 @@ public class QuizServletLab extends HttpServlet {
         out.print("<p>Your current score is: " + scroe + "</p>");
         out.print("<p>Guess the next number in the sequence! </p>");
         out.println("<p>" + questions[scroe] + "</p>");
-
-        out.print("<p>Your answer:<input type='text' name='answer'/></p> ");
-        out.print("<input type='submit' name='btnRestart' value='Restart' /></p> ");
+        out.print("<p>Your answer: <input type='text' name='answer'/></p> ");
+        out.print("<input type='submit'/></p> ");
         out.print("</form>");
         out.print("</body></html>");
 	}
@@ -90,7 +91,7 @@ public class QuizServletLab extends HttpServlet {
 	private void showResultPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession s = request.getSession();
 		Object obj = s.getAttribute("scroe");
-		int scroe = obj != null ? Integer.getInteger(obj.toString()) : 0;
+		int scroe = obj != null ? Integer.valueOf(obj.toString()) : 0;
 		PrintWriter out = response.getWriter();
 		out.print("<html>");
         out.print("<head>");
@@ -99,7 +100,7 @@ public class QuizServletLab extends HttpServlet {
         out.print("<body>");
         out.print("<h3>Have fun with NumberQuiz!</h3>");
         out.print("<p>Your current score is: " + scroe + "</p>");
-        out.print("<p>You have completed the Number Quiz, with a score of " + scroe + "out of 5</p>");
+        out.print("<p>You have completed the Number Quiz, with a score of " + scroe + " out of 5</p>");
         out.print("</body></html>");
 	}
 }
