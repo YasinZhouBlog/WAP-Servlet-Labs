@@ -17,9 +17,9 @@
 %>
 <form method='post' action="./QuizServletLabJsp">
 <h3>Have fun with NumberQuiz!</h3>
-<p>Your current score is: <%= ((Quiz)request.getSession().getAttribute("quiz")).getScore() %></p>
+<p>Your current score is: ${quiz.score}</p>
 <p>Guess the next number in the sequence! </p>
-<p><%= q.getQuestion() %></p>
+<p><%= ((Quiz)request.getSession().getAttribute("quiz")).getQuestion() %></p>
 <p>Your answer: <input type='text' name='answer'/></p>
 <input type='submit'/></p>
 </form>
