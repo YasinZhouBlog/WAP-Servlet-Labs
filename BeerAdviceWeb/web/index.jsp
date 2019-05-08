@@ -8,9 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Beer Selection Page</title>
   </head>
   <body>
-  $END$
+  <h1 align="center">Beer Selection Page</h1>
+  <form method="post" action="./BeerServlet">
+    Select beer characteristics<p>
+    Color:
+    <select name="color" size="1">
+      <option value="light">light</option>
+      <option value="amber">amber</option>
+      <option value="brown">brown</option>
+      <option value="dark">dark</option>
+    </select>
+    <br><br>
+    <div align="center">
+      <input type="submit">
+    </div>
+  </form>
   </body>
 </html>
