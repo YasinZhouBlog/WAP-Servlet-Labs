@@ -1,0 +1,13 @@
+body,ol,h1 {
+    margin: 0;
+}
+#form,h1 {
+    padding: 10px 0px 10px 10px;
+}
+
+#form {
+    background-color: azure;
+}
+h1 {
+    background-color: aliceblue;
+}
